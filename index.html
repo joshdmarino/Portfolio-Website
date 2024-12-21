@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Josh Marino Portfolio</title>
-    <!-- <link rel="stylesheet" href="./css/animation-classes.css" /> -->
+    <!-- Retaining your original styles and scripts -->
     <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico" />
     <script src="./js/animation.js" defer></script>
     <script src="./js/color-mode.js" defer></script>
@@ -13,22 +13,66 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/animation.css" />
     <link rel="stylesheet" href="./css/color-mode.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      #mode-toggle {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1;
+      }
+
+      #mode-toggle button {
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+        transition: background-color 0.3s ease;
+      }
+
+      #mode-toggle button:hover {
+        background-color: #ddd;
+      }
+
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+    </style>
   </head>
   <body>
-    <div id="mode-toggle" style="position: fixed; top: 10px; right: 10px; z-index: 1;">
-      <button onclick="toggleMode(false)" style="padding: 10px; font-size: 16px;">Light Mode</button>
-      <button onclick="toggleMode(true)" style="padding: 10px; font-size: 16px;">Dark Mode</button>
-    </div>   
+    <!-- Mode Toggle -->
+    <div id="mode-toggle">
+      <button onclick="toggleMode(false)">Light Mode</button>
+      <button onclick="toggleMode(true)">Dark Mode</button>
+    </div>
+
+    <!-- Canvas for Animations -->
     <canvas id="stockChart"></canvas>
+
+    <!-- Hero Section -->
     <div id="hero">
       <h5>Hello I'm</h5>
       <h1>Josh Marino</h1>
       <p></p>
-      <!-- Block, Element, Modifier (BEM) naming convention-->
       <div id="hero__animation">
         <div id="hero__animation__img"></div>
       </div>
     </div>
+
+    <!-- Grid Section -->
     <nav id="grid">
       <div id="grid__tl">
         <div id="grid__tl__btn">About</div>
@@ -36,37 +80,25 @@
           <div class="cards">
             <div class="cards__content">
               <article>
-                <img
-                  src="./assets/icons/education.png"
-                  alt="Education icon"
-                  class="icon"
-                />
+                <img src="./assets/icons/education.png" alt="Education icon" class="icon" />
                 <h2>Education</h2>
-                <p>
-                    B.S. Finance<br />
-                   <br />
-                  
-                </p>
+                <p>B.S. Finance</p>
               </article>
               <p class="cards__content__text">
-                Integrated Business and Engineering Honors Program (IBE) <br /> Morrill Scholarship Program <br /> Pace Setter Recipient
+                Integrated Business and Engineering Honors Program (IBE) <br />
+                Morrill Scholarship Program <br />
+                Pace Setter Recipient
               </p>
             </div>
             <div class="cards__content">
               <article>
-                <img
-                  src="./assets/icons/experience.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/icons/experience.png" alt="Experience icon" class="icon" />
                 <h2>Experience</h2>
-                <p></p>
               </article>
               <p class="cards__content__text">
-                Boston Consulting Group (BCG) - Incoming Summer Associate Consultant
-                <br />Goldman Sachs - Risk Summer Analyst
-                <br />Wells Fargo - Risk Summer Analyst
-
+                Boston Consulting Group (BCG) - Incoming Summer Associate Consultant <br />
+                Goldman Sachs - Risk Summer Analyst <br />
+                Wells Fargo - Risk Summer Analyst
               </p>
             </div>
           </div>
@@ -79,94 +111,24 @@
             <article class="experience__skill">
               <h2>Frontend Development</h2>
               <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
+                <img src="./assets/icons/checkmark.png" alt="Checkmark icon" class="icon" />
                 <div>
                   <h2>HTML</h2>
                   <p>Experienced</p>
                 </div>
               </div>
               <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
+                <img src="./assets/icons/checkmark.png" alt="Checkmark icon" class="icon" />
                 <div>
                   <h2>CSS</h2>
                   <p>Experienced</p>
                 </div>
               </div>
               <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
+                <img src="./assets/icons/checkmark.png" alt="Checkmark icon" class="icon" />
                 <div>
                   <h2>JavaScript</h2>
                   <p>Intermediate</p>
-                </div>
-              </div>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>TypeScript</h2>
-                  <p>Basic</p>
-                </div>
-              </div>
-            </article>
-            <article class="experience__skill">
-              <h2>Backend Development</h2>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>PostgreSQL</h2>
-                  <p>Basic</p>
-                </div>
-              </div>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>Node JS</h2>
-                  <p>Intermediate</p>
-                </div>
-              </div>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>Express JS</h2>
-                  <p>Intermediate</p>
-                </div>
-              </div>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>Git</h2>
-                  <p>Experienced</p>
                 </div>
               </div>
             </article>
@@ -190,97 +152,72 @@
               >
                 Demo
               </button>
-              <button
-                class="btn"
-                onclick="window.location.href='https://github.com'"
-              >
-                GitHub
-              </button>
+              <button class="btn" onclick="window.location.href='https://github.com'">GitHub</button>
             </div>
-            <div class="project p-2">
-              <img
-                class="project__img project-2"
-                src="assets/portfolio-projects/project-2-dark.png"
-                alt="Project 2"
-              />
-              <h2 class="project__title">Project Two</h2>
-              <button
-                class="btn"
-                onclick="window.location.href='https://netlify.com'"
-              >
-                Demo
-              </button>
-              <button
-                class="btn"
-                onclick="window.location.href='https://github.com'"
-              >
-                GitHub
-              </button>
-            </div>
-            <div class="project p-3">
-              <img
-                class="project__img project-3"
-                src="assets/portfolio-projects/project-3-dark.png"
-                alt="Project 3"
-              />
-              <h2 class="project__title">Project Three</h2>
-              <button
-                class="btn"
-                onclick="window.location.href='https://netlify.com'"
-              >
-                Demo
-              </button>
-              <button
-                class="btn"
-                onclick="window.location.href='https://github.com'"
-              >
-                GitHub
-              </button>
-            </div>
-            <button class="arrow" onclick="navigateProject(-1)">
-              &#10094;
-            </button>
-            <button class="arrow" onclick="navigateProject(1)">&#10095;</button>
           </div>
         </div>
       </div>
       <div id="grid__br">
         <div id="grid__br__btn">Links</div>
         <div id="grid__br__content">
-          <!--<h5 class="contact-text">Get In Touch</h5>-->
-          <!--<h2 class="contact-text">Contact Me</h2>-->
-          <div>
-            <button
-              class="btn btn-contact"
-              onclick="window.location.href='mailto:marino.210@osu.edu'"
-            >
-                 Email   
-            </button>
-            <button
-              class="btn btn-contact"
-              onclick="window.location.href='https://www.linkedin.com/in/joshmarino/'"
-            >
-              LinkedIn  
-            </button>
-            <button
-              class="btn btn-contact"
-              onclick="window.location.href='https://impulsiveprojects.substack.com'"
-            >
-              Substack  
-            </button>
-            <button
-              class="btn btn-contact"
-              onclick="window.location.href='https://everydayquad.com'"
-            >
-              EverydayQuad
-            </button>
-          </div>
+          <button
+            class="btn btn-contact"
+            onclick="window.location.href='mailto:marino.210@osu.edu'"
+          >
+            Email
+          </button>
+          <button
+            class="btn btn-contact"
+            onclick="window.location.href='https://www.linkedin.com/in/joshmarino/'"
+          >
+            LinkedIn
+          </button>
+          <button
+            class="btn btn-contact"
+            onclick="window.location.href='https://impulsiveprojects.substack.com'"
+          >
+            Substack
+          </button>
+          <button
+            class="btn btn-contact"
+            onclick="window.location.href='https://everydayquad.com'"
+          >
+            EverydayQuad
+          </button>
         </div>
       </div>
     </nav>
     <div id="color-mode">
       <div id="toggle-button" class="icon"></div>
     </div>
-    <script src="./js/stockChart.js"></script>
+
+    <script>
+      let activeScript = null;
+
+      function loadScript(src) {
+        if (activeScript) {
+          activeScript.remove(); // Remove the current script
+        }
+        const script = document.createElement("script");
+        script.src = src;
+        script.defer = true;
+        script.onload = () => console.log("Loaded:", src); // Debugging for script loading
+        document.body.appendChild(script);
+        activeScript = script;
+      }
+
+      function toggleMode(isDarkMode) {
+        if (isDarkMode) {
+          console.log("Switching to Dark Mode");
+          loadScript("./js/candlestickChart.js");
+        } else {
+          console.log("Switching to Light Mode");
+          loadScript("./js/monteCarlo.js");
+        }
+      }
+
+      // Initialize in Light Mode
+      toggleMode(false);
+    </script>
   </body>
 </html>
