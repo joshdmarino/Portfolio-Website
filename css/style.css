@@ -276,7 +276,7 @@ button {
   color: var(--btn-text);
   border: none;
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 3rem;
 }
 
 .btn {
