@@ -1,6 +1,7 @@
 const canvas = document.getElementById("candlestick-chart");
 const ctx = canvas.getContext("2d");
-const xAxisLineHeight = canvas.height + 737; // Position the line 40px above the bottom of the canvas
+const xAxisLineHeight = canvas.height + 770;
+const yAxisValues = [485.00, 481.00, 477.00, 473.00, 469.00, 467.83, 465.00, 461.00, 457.00, 453.00]; // Explicit Y-axis values
 
 
 // Resize canvas to fit the screen
@@ -84,25 +85,26 @@ function drawAxes() {
   const textColor = "#999";
 
   // Draw Y-axis (prices on the right side)
-  for (let i = 0; i <= 10; i++) {
-    const price = minPrice + (i * (maxPrice - minPrice)) / 10;
+  for (let i = 0; i < yAxisValues.length; i++) {
+    const price = yAxisValues[i];
     const y = priceToY(price);
 
-    // Price label
-    ctx.fillStyle = textColor;
-    ctx.font = "12px Arial";
-    ctx.textAlign = "left";
-    ctx.fillText(price.toFixed(2), canvas.width - 60, y + 4);
+    if (price === 467.83) {
+      // Highlight this specific price with a red box
+      ctx.fillStyle = "red";
+      ctx.fillRect(canvas.width - 59, y - 10, 60, 20); // Red box to the right of Y-axis
+      ctx.fillStyle = "white";
+      ctx.font = "12px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText(price.toFixed(2), canvas.width - 36, y + 5); // White text centered in box
+    } else {
+      // Normal price label for other values
+      ctx.fillStyle = textColor;
+      ctx.font = "12px Arial";
+      ctx.textAlign = "left";
+      ctx.fillText(price.toFixed(2), canvas.width - 55, y + 4);
+    }
   }
-
-  // Highlight the red line's price (fixed at 467.83, directly under 469.00)
-  const redLineY = priceToY(redLinePrice);
-  const redBoxY = priceToY(469.00) + 20; // Positioning directly under 469.00
-  ctx.fillStyle = "red";
-  ctx.fillRect(canvas.width - 90, redBoxY - 10, 60, 20); // Red box
-  ctx.fillStyle = "white";
-  ctx.textAlign = "center";
-  ctx.fillText(redLinePrice.toFixed(2), canvas.width - 60, redBoxY + 5);
 
   // Draw axis line
   ctx.strokeStyle = axisColor;
@@ -112,7 +114,7 @@ function drawAxes() {
   ctx.lineTo(canvas.width - 60, canvas.height);
   ctx.stroke();
 }
-
+  
 // Draw the red dashed line
 function drawRedLine() {
   const redLineY = priceToY(redLinePrice);
@@ -146,7 +148,8 @@ function drawXAxis() {
     // Position time labels slightly below the X-axis line
     ctx.fillStyle = textColor;
     ctx.textAlign = "center";
-    ctx.fillText(time, x, canvas.height - 10); // 10px from the bottom of the canvas
+    ctx.fillText(time, x, canvas.height - 10); // 10px from the bottom of the canvas // Position the line 40px above the bottom of the canvas
+
   }
 }
 
