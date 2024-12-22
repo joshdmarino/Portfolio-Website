@@ -16,21 +16,60 @@
     <link rel="stylesheet" href="./css/color-mode.css" />
   </head>
   <body>
+    <div id="blur-container">
+    <header id="top-bar">
+      <!-- Top Row -->
+      <div id="top-row">
+        <img src="./assets/icons/search.png" alt="Search" id="search-icon" />
+        <h1 id="logo">JMP</h1>
+        <img src="./assets/icons/plus.png" alt="Plus" id="plus-icon" />
+        <div class="separator"></div>
+        <div id="times">
+          <span>1m</span>
+          <span>30m</span>
+          <span>1h</span>
+          <span class="highlight">5m</span>
+        </div>
+        <div class="separator"></div>
+        <nav id="nav-buttons">
+          <button id="grid__tl__btn">About</button>
+          <button id="grid__tr__btn">Experience</button>
+          <button id="grid__bl__btn">Projects</button>
+          <button id="grid__br__btn">Contact</button>
+        </nav>
+        <div class="separator"></div>
+        <div id="color-mode">
+          <div id="toggle-button"></div>
+        </div>
+      </div>
+    
+      <!-- Bottom Row -->
+      <div id="bottom-row">
+        <img src="/assets/icons/profile-photo.jpg" alt="Profile Image" id="profile-image" />
+        <div id="bottom-text">
+          <span class="name">Josh Marino's Portfolio</span>
+          <span class="dot">·</span>
+          <span class="info">5, Cboe One</span>
+          <span class="ohlc">
+            O: <span class="green">468.50</span>
+            H: <span class="green">470.00</span>
+            L: <span class="green">466.20</span>
+            C: <span class="green">469.80</span>
+          </span>
+          <span class="change green">+1.50 (0.32%)</span>
+        </div>
+      </div>
+    
+      <!-- Volume Section -->
+      <div>
+      <span id ="volume"> Vol </span>
+      <span id ="volume__number">236.06K</span>
+      </div>
+    </header>
     
     <canvas id="candlestick-chart"></canvas>
-    <div id="ticker">
-      <h1>Josh Marino's Portfolio (JMP) </h1>
-      <div id="ohlc">
-        <span>O: <span id="open">468.50</span></span>
-        <span>H: <span id="high">470.00</span></span>
-        <span>L: <span id="low">466.20</span></span>
-        <span>C: <span id="close">469.80</span></span>
-      </div>
-    </div>
-    
     <nav id="grid">
       <div id="grid__tl">
-        <div id="grid__tl__btn">About</div>
         <div id="grid__tl__content">
           <div class="cards">
             <div class="cards__content">
@@ -71,7 +110,6 @@
         </div>
       </div>
       <div id="grid__tr">
-        <div id="grid__tr__btn">Experience</div>
         <div id="grid__tr__content">
           <div class="cards experience">
             <article class="experience__skill">
@@ -172,7 +210,6 @@
         </div>
       </div>
       <div id="grid__bl">
-        <div id="grid__bl__btn">Projects</div>
         <div id="grid__bl__content">
           <div id="grid__bl__content__projects">
             <div class="project p-1">
@@ -195,46 +232,6 @@
                 GitHub
               </button>
             </div>
-            <!--<div class="project p-2">
-              <img
-                class="project__img project-2"
-                src="assets/portfolio-projects/project-2-dark.png"
-                alt="Project 2"
-              />
-              <h2 class="project__title">Project Two</h2>
-              <button
-                class="btn"
-                onclick="window.location.href='https://netlify.com'"
-              >
-                Demo
-              </button>
-              <button
-                class="btn"
-                onclick="window.location.href='https://github.com'"
-              >
-                GitHub
-              </button>
-            </div>
-            <div class="project p-3">
-              <img
-                class="project__img project-3"
-                src="assets/portfolio-projects/project-3-dark.png"
-                alt="Project 3"
-              />
-              <h2 class="project__title">Project Three</h2>
-              <button
-                class="btn"
-                onclick="window.location.href='https://netlify.com'"
-              >
-                Demo
-              </button>
-              <button
-                class="btn"
-                onclick="window.location.href='https://github.com'"
-              >
-                GitHub
-              </button>
-            </div>-->
             <button class="arrow" onclick="navigateProject(-1)">
               &#10094;
             </button>
@@ -243,7 +240,6 @@
         </div>
       </div>
       <div id="grid__br">
-        <div id="grid__br__btn">Contact</div>
         <div id="grid__br__content">
           <h5 class="contact-text">Get In Touch</h5>
           <h2 class="contact-text">Contact Me</h2>
@@ -264,8 +260,5 @@
         </div>
       </div>
     </nav>
-    <div id="color-mode">
-      <div id="toggle-button" class="icon"></div>
-    </div>
   </body>
 </html>

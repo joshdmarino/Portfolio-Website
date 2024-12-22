@@ -1,14 +1,17 @@
 const canvas = document.getElementById("candlestick-chart");
 const ctx = canvas.getContext("2d");
-const xAxisLineHeight = canvas.height + 770;
+const xAxisOffset = 40; // Fixed distance above the times
+const timeLabelOffset = 20; // Distance of time labels below the X-axis line
 const yAxisValues = [485.00, 481.00, 477.00, 473.00, 469.00, 467.83, 465.00, 461.00, 457.00, 453.00]; // Explicit Y-axis values
-
 
 // Resize canvas to fit the screen
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  const topBar = document.getElementById("top-bar"); // Get the top bar element
+  const topBarHeight = topBar.getBoundingClientRect().height; // Dynamically calculate its height
+  canvas.width = window.innerWidth; // Full browser width
+  canvas.height = window.innerHeight - topBarHeight; // Subtract top bar height from canvas height
 }
+
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
@@ -30,20 +33,24 @@ function generateCandle(x) {
     minPrice,
     Math.min(maxPrice, lastPrice + priceChange)
   );
-  const high = Math.min(xAxisLineHeight, Math.max(open, close) + Math.random() * 10); // Cap at xAxisLineHeight
-  const low = Math.max(0, Math.min(open, close) - Math.random() * 10); // Ensure it doesn’t go below 0
+  const high = Math.min(maxPrice, Math.max(open, close) + Math.random() * 1);
+const low = Math.max(minPrice, Math.min(open, close) - Math.random() * 1);
 
   lastPrice = close;
 
   return { x, open, close, high, low };
 }
 
-
 // Convert price to Y-coordinate
 function priceToY(price) {
   const percent = (price - minPrice) / (maxPrice - minPrice);
-  return Math.min(canvas.height, Math.max(0, canvas.height - percent * canvas.height));
+  const drawableHeight = canvas.height - xAxisOffset; // Reduce by the X-axis offset
+  return Math.min(
+    canvas.height - xAxisOffset,
+    Math.max(0, (1 - percent) * drawableHeight)
+  ); // Ensure within bounds
 }
+
 
 // Format time in HH:MM military format, resetting after 24:00
 function formatTime(minutes) {
@@ -55,30 +62,42 @@ function formatTime(minutes) {
 
 // Draw a single candlestick
 function drawCandle(candle) {
-    // Determine if the candle is bullish or bearish
-    const isBullish = candle.close > candle.open;
-  
-    // Set the color for the candle
-    const candleColor = isBullish ? "rgba(0, 128, 0, 0.8)" : "rgba(255, 0, 0, 0.8)";
-    
-    // Wicks
-    ctx.strokeStyle = candleColor; // Use the same color as the candle body
-    ctx.beginPath();
-    ctx.moveTo(candle.x + candleWidth / 2, priceToY(candle.high));
-    ctx.lineTo(candle.x + candleWidth / 2, priceToY(candle.low));
-    ctx.stroke();
-  
-    // Body
-    ctx.fillStyle = candleColor;
-    ctx.fillRect(
-      candle.x,
-      priceToY(Math.max(candle.open, candle.close)),
-      candleWidth,
-      Math.abs(priceToY(candle.open) - priceToY(candle.close))
-    );
-  }
-  
+  // Determine if the candle is bullish or bearish
+  const isBullish = candle.close > candle.open;
 
+  // Set the color for the candle
+  const candleColor = isBullish ? "rgba(0, 128, 0, 0.8)" : "rgba(255, 0, 0, 0.8)";
+
+  // Wicks (shortened)
+  const wickTop = Math.max(
+    priceToY(candle.high),
+    priceToY(Math.max(candle.open, candle.close)) - 10 // Limit wick above body
+  );
+  const wickBottom = Math.min(
+    priceToY(candle.low),
+    priceToY(Math.min(candle.open, candle.close)) + 10 // Limit wick below body
+  );
+
+  ctx.strokeStyle = candleColor; // Use the same color as the candle body
+  ctx.beginPath();
+  ctx.moveTo(candle.x + candleWidth / 2, wickTop); // Top of the wick
+  ctx.lineTo(candle.x + candleWidth / 2, wickBottom); // Bottom of the wick
+  ctx.stroke();
+
+  // Body
+  ctx.fillStyle = candleColor;
+  ctx.fillRect(
+    candle.x,
+    priceToY(Math.max(candle.open, candle.close)), // Top of the body
+    candleWidth,
+    Math.abs(priceToY(candle.open) - priceToY(candle.close)) // Height of the body
+  );
+}
+
+
+
+// Draw the axes
+// Draw the axes
 // Draw the axes
 function drawAxes() {
   const axisColor = "#666";
@@ -98,15 +117,23 @@ function drawAxes() {
       ctx.textAlign = "center";
       ctx.fillText(price.toFixed(2), canvas.width - 36, y + 5); // White text centered in box
     } else {
-      // Normal price label for other values
+      // Normal price label for other values with ticks
       ctx.fillStyle = textColor;
       ctx.font = "12px Arial";
       ctx.textAlign = "left";
       ctx.fillText(price.toFixed(2), canvas.width - 55, y + 4);
+
+      // Draw ticks for prices
+      ctx.strokeStyle = textColor;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(canvas.width - 60, y); // Tick position on Y-axis
+      ctx.lineTo(canvas.width - 65, y); // Tick extends slightly to the left
+      ctx.stroke();
     }
   }
 
-  // Draw axis line
+  // Draw Y-axis line
   ctx.strokeStyle = axisColor;
   ctx.lineWidth = 2;
   ctx.beginPath();
@@ -114,6 +141,44 @@ function drawAxes() {
   ctx.lineTo(canvas.width - 60, canvas.height);
   ctx.stroke();
 }
+
+// Draw the X-axis (time labels)
+function drawXAxis() {
+  const textColor = "#999";
+  const numLabels = Math.ceil(canvas.width / candleWidth);
+  const xAxisLineHeight = canvas.height - xAxisOffset; // Fixed position for X-axis line
+  const yAxisX = canvas.width - 60; // X-coordinate of the Y-axis
+
+  // Draw the horizontal X-axis line up to the Y-axis
+  ctx.strokeStyle = "#666";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(0, xAxisLineHeight); // Start at the leftmost edge
+  ctx.lineTo(yAxisX, xAxisLineHeight); // End at the Y-axis
+  ctx.stroke();
+
+  // Draw time labels and vertical ticks
+  for (let i = 0; i <= numLabels; i++) {
+    const x = i * candleWidth + canvas.width - (numLabels * candleWidth);
+    if (x >= yAxisX) break; // Stop drawing if past the Y-axis
+
+    const time = formatTime(570 + timeOffset + i * 5); // Start at 9:30 AM
+
+    // Draw time label slightly below the X-axis line
+    ctx.fillStyle = textColor;
+    ctx.textAlign = "center";
+    ctx.fillText(time, x, xAxisLineHeight + timeLabelOffset);
+
+    // Draw vertical ticks for time labels
+    ctx.strokeStyle = textColor;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, xAxisLineHeight); // Start tick at the X-axis line
+    ctx.lineTo(x, xAxisLineHeight - 5); // Extend tick upward
+    ctx.stroke();
+  }
+}
+
   
 // Draw the red dashed line
 function drawRedLine() {
@@ -126,33 +191,6 @@ function drawRedLine() {
   ctx.stroke();
   ctx.setLineDash([]); // Reset to solid line
 }
-
-// Draw the X-axis (time labels)
-function drawXAxis() {
-  const textColor = "#999";
-  const numLabels = Math.ceil(canvas.width / candleWidth);
-
-  // Draw the line above the times
-  ctx.strokeStyle = "#666";
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.moveTo(0, xAxisLineHeight); // Position the line at xAxisLineHeight
-  ctx.lineTo(canvas.width, xAxisLineHeight);
-  ctx.stroke();
-
-  // Draw time labels below the line
-  for (let i = 0; i <= numLabels; i++) {
-    const x = i * candleWidth + canvas.width - (numLabels * candleWidth);
-    const time = formatTime(570 + timeOffset + i * 5); // Start at 9:30 AM
-
-    // Position time labels slightly below the X-axis line
-    ctx.fillStyle = textColor;
-    ctx.textAlign = "center";
-    ctx.fillText(time, x, canvas.height - 10); // 10px from the bottom of the canvas // Position the line 40px above the bottom of the canvas
-
-  }
-}
-
 
 // Animation loop
 function animate() {

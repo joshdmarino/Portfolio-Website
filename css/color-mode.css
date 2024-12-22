@@ -1,42 +1,65 @@
-    
-  /* DARK MODE */
-  
-  :root.dark-mode {
-    --bg: #202124;
-    --bg-alt: #3c3d40;
-    --bg-alt-2: #333;
-    --bg-transparent: #333333f5;
-    --border: 0.01rem solid #5a5a5a;
-    --text: #fff;
-    --moon: url(../assets/icons/moon.png);
-  }
-  
-  /* COLOR MODE TOGGLE BUTTON */
-  
-  #color-mode {
-    background: var(--bg-alt-2);
-    height: 2.75rem;
-    width: 4rem;
-    border-radius: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  #toggle-button {
-    background-image: var(--sun);
-    background-size: cover;
-    cursor: pointer;
-  }
-  
-  .dark-mode #toggle-button {
-    background-image: var(--moon);
-  }
-  
-  .dark-mode #color-mode {
-    justify-content: flex-end;
-  }
+/* LIGHT MODE */
+
+body:after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+:root {
+  /* Colors */
+  --bg: #fff;
+  --bg-alt: #f0f0f0; /* Light gray for top bar in light mode */
+  --bg-alt-2: #e0e0e0; /* Subtle gray for elements like toggle */
+  --bg-transparent: #ffffffe8;
+  --border: 0.01rem solid #ccc; /* Lighter border in light mode */
+  --text: #333; /* Dark text for light mode */
+  --text-alt: #666; /* Subtle text for inactive states */
+  --btn: #f7f7f7; /* Light button background */
+  --sun: url(../assets/icons/sun.png); /* Sun icon for toggle */
+}
+
+/* DARK MODE */
+
+:root.dark-mode {
+  --bg: #202124;
+  --bg-alt: #3c3d40; /* Dark background for top bar in dark mode */
+  --bg-alt-2: #333; /* Dark gray for elements like toggle */
+  --bg-transparent: #333333f5;
+  --border: 0.01rem solid #5a5a5a; /* Darker border in dark mode */
+  --text: #fff; /* Light text for dark mode */
+  --text-alt: #aaa; /* Subtle text for inactive states */
+  --btn: #3c3d40; /* Dark button background */
+  --moon: url(../assets/icons/moon.png); /* Moon icon for toggle */
+}
+
+/* COLOR MODE TOGGLE BUTTON */
+
+#color-mode {
+  background: var(--bg-alt-2);
+  height: 2rem;
+  width: 3.5rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#toggle-button {
+  background-image: var(--sun); /* Light mode toggle icon */
+  background-size: cover;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dark-mode #toggle-button {
+  background-image: var(--moon); /* Dark mode toggle icon */
+}
+
+.dark-mode #color-mode {
+  justify-content: flex-end;
+}

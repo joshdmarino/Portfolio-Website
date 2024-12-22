@@ -170,7 +170,7 @@ function handleWindowResize() {
         brContent.style.zIndex = "200";
         trBtn.style.zIndex = "100";
         tlBtn.style.zIndex = "100";
-        blBtn.style.zIndex = "100";
+        blBtn.style.zIndex = "200";
         brBtn.style.zIndex = "300";
       } else {
         brActive = "translateX(-5vw) translateY(0)";
