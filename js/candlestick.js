@@ -219,11 +219,11 @@ function animate() {
   // Add new candles at the Y-axis
   if (
     candlesticks.length === 0 ||
-    candlesticks[candlesticks.length - 1].x + candleWidth <= canvas.width - 60
+    candlesticks[candlesticks.length - 1].x + candleWidth <= canvas.width - 95
   ) {
     const newCandleX = candlesticks.length
       ? candlesticks[candlesticks.length - 1].x + candleWidth
-      : canvas.width - 60; // Start at the Y-axis
+      : canvas.width - 95; // Start at the Y-axis
     candlesticks.push(generateCandle(newCandleX));
   }
 

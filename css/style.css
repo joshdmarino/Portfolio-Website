@@ -39,6 +39,21 @@ p {
 
 /* GRID COMMON STYLES */
 
+/* General settings for body to avoid scrollbars */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Prevents scrolling */
+  box-sizing: border-box;
+}
+
+/* Ensure all elements respect screen boundaries */
+* {
+  box-sizing: border-box;
+}
+
+/* Update grid to fit screen exactly */
 #grid {
   position: absolute;
   display: grid;
@@ -46,8 +61,8 @@ p {
   grid-template-columns: 1fr 1fr;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
 }
+
 
 #grid__tl__content,
 #grid__tr__content,
@@ -59,7 +74,6 @@ p {
   color: var(--text-alt);
 }
 
-/* Remove Old Corner Button Styles */
 #grid__tl__btn,
 #grid__tr__btn,
 #grid__bl__btn,
@@ -76,14 +90,26 @@ p {
   font-size: 1rem;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  background:var(--bg);
+  color: var(--text);
+
 }
 
-/* Remove Old Corner Transforms */
+#grid__tl__content,
+#grid__tr__content,
+#grid__bl__content,
+#grid__br__content {
+  position: absolute;
+  transition: transform 0.3s ease-in-out;
+  color: var(--text-alt);
+  text-align: center;
+}
+
 #grid__tl__btn:active,
-#grid__br__btn:active,
 #grid__tr__btn:active,
-#grid__bl__btn:active {
-  transform: none;
+#grid__bl__btn:active,
+#grid__br__btn:active {
+transform: scale(1.05);
 }
 
 /* TOP LEFT CORNER CONTENT */
@@ -323,9 +349,10 @@ button {
   top: 0; /* Sticks it to the top of the viewport */
   z-index: 100; /* Ensures it stays above other elements */
   background: var(--bg-alt); /* Background color, adapt to your theme */
-  border-bottom: var(--border); /* Optional bottom border */
   padding: 1rem; /* Padding for spacing */
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+  width: 100%;
+  left: 0;
+  box-sizing: border-box;
 }
 
 
