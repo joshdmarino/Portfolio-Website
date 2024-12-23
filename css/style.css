@@ -27,29 +27,14 @@ p {
   margin: 0 0.5rem;
 }
 
-/* HERO */
-
-#hero {
-  position: absolute;
-  top: 5%;
-  left: 35%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
 /* GRID COMMON STYLES */
 
 /* General settings for body to avoid scrollbars */
-html, body {
+html{
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden; /* Prevents scrolling */
-  box-sizing: border-box;
-}
-
-/* Ensure all elements respect screen boundaries */
-* {
   box-sizing: border-box;
 }
 
@@ -93,16 +78,6 @@ html, body {
   background:var(--bg);
   color: var(--text);
 
-}
-
-#grid__tl__content,
-#grid__tr__content,
-#grid__bl__content,
-#grid__br__content {
-  position: absolute;
-  transition: transform 0.3s ease-in-out;
-  color: var(--text-alt);
-  text-align: center;
 }
 
 #grid__tl__btn:active,
@@ -443,6 +418,7 @@ button {
   background: var(--bg);
   transform: scale(0.95);
 }
+
 /* BOTTOM ROW */
 #bottom-row {
   display: flex;
@@ -498,3 +474,4 @@ button {
   color: green;
   margin-top: 0.3rem;
 }
+
