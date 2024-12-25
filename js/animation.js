@@ -24,17 +24,17 @@ const bgColorAlt = "var(--bg-alt)";
 const textColor = "var(--text)";
 const textColorAlt = "var(--text-alt)";
 
-let tlActive = "translateX(5%) translateY(0)";
-let tlHidden = "translateX(-100%) translateY(-100%)";
+let tlActive = "translateX(5vw) translateY(0)";
+let tlHidden = "translateX(-100vw) translateY(-100vh)";
 
-let trActive = "translateX(-5%) translateY(0)";
-let trHidden = "translateX(100%) translateY(-100%)";
+let trActive = "translateX(-5vw) translateY(0)";
+let trHidden = "translateX(100vw) translateY(-100vh)";
 
-let blActive = "translateX(10%) translateY(7%)";
-let blHidden = "translateX(-100%) translateY(100%)";
+let blActive = "translateX(10vw) translateY(7vh)";
+let blHidden = "translateX(-100vw) translateY(100vh)";
 
-let brActive = "translateX(-5%) translateY(0)";
-let brHidden = "translateX(100%) translateY(100%)";
+let brActive = "translateX(-5vw) translateY(0)";
+let brHidden = "translateX(100vw) translateY(100vh)";
 
 // Define corner that is open
 let activeCorner = null;
@@ -53,7 +53,7 @@ function resetAll() {
   });
 
   contents.forEach(content => {
-    content.style.transform = "translateX(-100%) translateY(-100%)"; // Hidden by default
+    content.style.transform = "translateX(-100vw) translateY(-100vh)"; // Hidden by default
     content.style.width = ""; // Reset any dynamic styling
     content.style.height = "";
     content.style.top = "";
@@ -72,8 +72,8 @@ function applyStylesForCorner(corner) {
   switch (corner) {
     case "grid__tl__btn":
       tlContent.style.transform = "translateX(0) translateY(0)";
-      tlContent.style.width = "100%";
-      tlContent.style.height = "100%";
+      tlContent.style.width = "100vw";
+      tlContent.style.height = "100vh";
       tlContent.style.top = "0";
       tlContent.style.display = "flex";
       tlContent.style.alignItems = "center";
@@ -84,8 +84,8 @@ function applyStylesForCorner(corner) {
 
     case "grid__tr__btn":
       trContent.style.transform = "translateX(0) translateY(0)";
-      trContent.style.width = "100%";
-      trContent.style.height = "100%";
+      trContent.style.width = "100vw";
+      trContent.style.height = "100vh";
       trContent.style.top = "0";
       trContent.style.display = "flex";
       trContent.style.alignItems = "center";
@@ -96,8 +96,8 @@ function applyStylesForCorner(corner) {
 
     case "grid__bl__btn":
       blContent.style.transform = "translateX(0) translateY(0)";
-      blContent.style.width = window.innerWidth <= 600 ? "100%" : "70%";
-      blContent.style.height = window.innerWidth <= 600 ? "100%" : "auto";
+      blContent.style.width = window.innerWidth <= 600 ? "100vw" : "70%";
+      blContent.style.height = window.innerWidth <= 600 ? "100vh" : "auto";
       blContent.style.top = window.innerWidth <= 600 ? "0" : "auto";
       blContent.style.display = "flex";
       blContent.style.alignItems = "center";
@@ -108,8 +108,8 @@ function applyStylesForCorner(corner) {
 
     case "grid__br__btn":
       brContent.style.transform = "translateX(0) translateY(0)";
-      brContent.style.width = "100%";
-      brContent.style.height = "100%";
+      brContent.style.width = "100vw";
+      brContent.style.height = "100vh";
       brContent.style.bottom = "0";
       brContent.style.display = "flex";
       brContent.style.flexDirection = "column";

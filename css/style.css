@@ -33,8 +33,7 @@ p {
 html{
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: auto; /* Prevents scrolling */
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -91,10 +90,10 @@ html{
 /* TOP LEFT CORNER CONTENT */
 
 #grid__tl__content {
-  width: 30%;
-  top: 10%;
+  width: 30vw;
+  top: 10vh;
   left: 0;
-  transform: translateX(-100%) translateY(-100%);
+  transform: translateX(-100vw) translateY(-100vh);
 }
 
 article {
@@ -141,10 +140,10 @@ article p {
 /* TOP RIGHT CORNER CONTENT */
 
 #grid__tr__content {
-  width: 30%;
-  top: 10%;
+  width: 30vw;
+  top: 10vh;
   right: 0;
-  transform: translateX(100%) translateY(-100%);
+  transform: translateX(100vw) translateY(-100vh);
 }
 
 .experience {
@@ -195,9 +194,9 @@ article p {
 
 #grid__bl__content {
   width: 15rem;
-  bottom: 15%;
+  bottom: 15vh;
   left: 0;
-  transform: translateX(-100%) translateY(100%);
+  transform: translateX(-100vw) translateY(100vh);
 }
 
 .project {
@@ -268,8 +267,8 @@ button {
 
 #grid__br__content {
   bottom: 0;
-  right: 0%;
-  transform: translateX(100%) translateY(100%);
+  right: 0vw;
+  transform: translateX(100vw) translateY(100vh);
 }
 
 #grid__br__content div {
@@ -325,8 +324,10 @@ button {
   top: 0; /* Sticks it to the top of the viewport */
   z-index: 100; /* Ensures it stays above other elements */
   background: var(--bg-alt); /* Background color, adapt to your theme */
-  padding: 1rem; /* Padding for spacing */
+  padding: 0rem; /* Padding for spacing */
   width: 100%;
+  max-width: none;
+  margin: 0;
   left: 0;
   box-sizing: border-box;
 }
@@ -476,32 +477,3 @@ button {
   margin-top: 0.3rem;
 }
 
-@media (max-width: 768px) {
-  #grid {
-    grid-template-rows: repeat(4, 1fr); /* Adjust grid for smaller screens */
-    grid-template-columns: 1fr; /* Stack columns vertically */
-  }
-
-  #grid__tl__content,
-  #grid__tr__content,
-  #grid__bl__content,
-  #grid__br__content {
-    width: 90%; /* Ensure content fits within the viewport */
-    left: 5%; /* Center content */
-    transform: none; /* Prevent overflowing transforms */
-  }
-
-  button {
-    font-size: 0.8rem; /* Resize buttons for smaller screens */
-    padding: 0.3rem;
-  }
-
-  #top-bar {
-    padding: 0.5rem; /* Adjust padding for smaller screens */
-  }
-
-  #nav-buttons button {
-    padding: 0.2rem 0.4rem;
-    font-size: 0.75rem; /* Reduce button font size */
-  }
-}
