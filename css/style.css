@@ -34,7 +34,7 @@ html{
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* Prevents scrolling */
+  overflow: auto; /* Prevents scrolling */
   box-sizing: border-box;
 }
 
@@ -44,10 +44,31 @@ html{
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
+#grid__tl__btn,
+#grid__tr__btn,
+#grid__bl__btn,
+#grid__br__btn {
+  height: auto;
+  width: auto;
+  background:var(--bg);
+  color: var(--text);
+  border: var(--border);
+  position: static;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  z-index: 100;
+  border-radius: 40%;
+  transition: transform 0.2s ease-in-out;
+}
 
 #grid__tl__content,
 #grid__tr__content,
@@ -59,41 +80,21 @@ html{
   color: var(--text-alt);
 }
 
-#grid__tl__btn,
-#grid__tr__btn,
-#grid__bl__btn,
-#grid__br__btn {
-  position: static;
-  transform: none;
-  height: auto;
-  width: auto;
-  margin: 0;
-  padding: 0.5rem 1rem;
-  text-align: center;
-  border-radius: 20px; /* Matches top bar button design */
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-  background:var(--bg);
-  color: var(--text);
-
-}
-
 #grid__tl__btn:active,
+#grid__br__btn:active, 
 #grid__tr__btn:active,
-#grid__bl__btn:active,
-#grid__br__btn:active {
-transform: scale(1.05);
+#grid__bl__btn:active{
+  transform:scale(1.05);
 }
+
 
 /* TOP LEFT CORNER CONTENT */
 
 #grid__tl__content {
-  width: 30vw;
-  top: 10vh;
+  width: 30%;
+  top: 10%;
   left: 0;
-  transform: translateX(-100vw) translateY(-100vh);
+  transform: translateX(-100%) translateY(-100%);
 }
 
 article {
@@ -140,10 +141,10 @@ article p {
 /* TOP RIGHT CORNER CONTENT */
 
 #grid__tr__content {
-  width: 30vw;
-  top: 10vh;
+  width: 30%;
+  top: 10%;
   right: 0;
-  transform: translateX(100vw) translateY(-100vh);
+  transform: translateX(100%) translateY(-100%);
 }
 
 .experience {
@@ -194,9 +195,9 @@ article p {
 
 #grid__bl__content {
   width: 15rem;
-  bottom: 15vh;
+  bottom: 15%;
   left: 0;
-  transform: translateX(-100vw) translateY(100vh);
+  transform: translateX(-100%) translateY(100%);
 }
 
 .project {
@@ -267,8 +268,8 @@ button {
 
 #grid__br__content {
   bottom: 0;
-  right: 0vw;
-  transform: translateX(100vw) translateY(100vh);
+  right: 0%;
+  transform: translateX(100%) translateY(100%);
 }
 
 #grid__br__content div {
@@ -475,3 +476,32 @@ button {
   margin-top: 0.3rem;
 }
 
+@media (max-width: 768px) {
+  #grid {
+    grid-template-rows: repeat(4, 1fr); /* Adjust grid for smaller screens */
+    grid-template-columns: 1fr; /* Stack columns vertically */
+  }
+
+  #grid__tl__content,
+  #grid__tr__content,
+  #grid__bl__content,
+  #grid__br__content {
+    width: 90%; /* Ensure content fits within the viewport */
+    left: 5%; /* Center content */
+    transform: none; /* Prevent overflowing transforms */
+  }
+
+  button {
+    font-size: 0.8rem; /* Resize buttons for smaller screens */
+    padding: 0.3rem;
+  }
+
+  #top-bar {
+    padding: 0.5rem; /* Adjust padding for smaller screens */
+  }
+
+  #nav-buttons button {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.75rem; /* Reduce button font size */
+  }
+}
