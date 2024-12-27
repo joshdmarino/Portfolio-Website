@@ -49,7 +49,7 @@ function resetAll() {
     button.style.color = "var(--text)";
     button.innerHTML = button.id === "grid__tl__btn" ? "About" :
                        button.id === "grid__tr__btn" ? "Experience" :
-                       button.id === "grid__bl__btn" ? "Projects" : "Contact";
+                       button.id === "grid__bl__btn" ? "Projects" : "More";
   });
 
   contents.forEach(content => {
@@ -125,48 +125,128 @@ function applyStylesForCorner(corner) {
 }
 
 // Function to activate a specific button and content
-function activateButton(button, content, label) {
+// Add event listener to handle window resizing
+window.addEventListener("resize", handleWindowResize);
+
+// Store last reverse animation
+let lastReverseAnimation = "";
+
+// Play animation function
+function playAnimation(animation, reverseAnimation) {
+  heroImage.className = ""; // Reset heroImage animation classes
+  if (lastReverseAnimation !== "") {
+    heroImage.classList.add(lastReverseAnimation);
+    setTimeout(() => {
+      heroImage.classList.remove(lastReverseAnimation);
+      heroImage.classList.add(animation);
+      lastReverseAnimation = reverseAnimation;
+    }, 200);
+  } else {
+    heroImage.classList.add(animation);
+    lastReverseAnimation = reverseAnimation;
+  }
+}
+
+// Handle closing animations
+function playClosingAnimation(reverseAnimation) {
+  // Reset button and content styles
+  resetAll();
+  if (activeCorner) {
+    switch (activeCorner) {
+      case "grid__tl__btn":
+        tlContent.style.transform = tlHidden;
+        break;
+      case "grid__tr__btn":
+        trContent.style.transform = trHidden;
+        break;
+      case "grid__bl__btn":
+        blContent.style.transform = blHidden;
+        break;
+      case "grid__br__btn":
+        brContent.style.transform = brHidden;
+        break;
+      default:
+        break;
+    }
+  }
+  lastReverseAnimation = reverseAnimation;
+  activeCorner = null;
+  heroImage.classList.add(reverseAnimation);
+  setTimeout(() => {
+    heroImage.classList.remove(reverseAnimation);
+  }, 200);
+}
+
+// Handle window resizing
+function handleWindowResize() {
+  switch (activeCorner) {
+    case "grid__bl__btn":
+        blActive = "translateX(0) translateY(0)";
+        blContent.style.transform = "translateX(0vw) translateY(0)";
+        blContent.style.width = "100vw";
+        blContent.style.height = "100vh";
+        blContent.style.top = "0";
+        blContent.style.display = "flex";
+        blContent.style.alignItems = "center";
+        blContent.style.justifyContent = "center";
+        blContent.style.background = "var(--bg-transparent)";
+        blContent.style.zIndex = "200";
+        projectOne.style.width = "35%";
+        projectOne.style.margin = "auto auto 0.5rem";
+        projectTwo.style.width = "35%";
+        projectTwo.style.margin = "auto auto 0.5rem";
+        projectThree.style.width = "35%";
+        projectThree.style.margin = "auto auto 0.5rem";
+      break;
+  }
+}
+
+// Update activateButton function to include animations
+function activateButton(button, content, label, animation, reverseAnimation) {
   resetAll();
   activeCorner = button.id;
 
-  // Set button active styles
+  // Set active button styles
   button.style.background = "var(--bg-alt)";
   button.style.color = "var(--text-alt)";
   button.innerHTML = `&uarr;<br/>${label}`;
 
   // Apply styles based on the corner
   applyStylesForCorner(button.id);
+  handleWindowResize();
+  playAnimation(animation, reverseAnimation);
 }
 
-// Event listeners for buttons
+// Update event listeners to include animations
 tlBtn.addEventListener("click", () => {
-  if (activeCorner === tlBtn.id) {
-    resetAll();
+  if (activeCorner === "grid__tl__btn") {
+    playClosingAnimation("reverse-animate-top-left");
   } else {
-    activateButton(tlBtn, tlContent, "About");
+    activateButton(tlBtn, tlContent, "About", "animate-top-left", "reverse-animate-top-left");
   }
 });
 
 trBtn.addEventListener("click", () => {
-  if (activeCorner === trBtn.id) {
-    resetAll();
+  if (activeCorner === "grid__tr__btn") {
+    playClosingAnimation("reverse-animate-top-right");
   } else {
-    activateButton(trBtn, trContent, "Experience");
+    activateButton(trBtn, trContent, "Experience", "animate-top-right", "reverse-animate-top-right");
   }
 });
 
 blBtn.addEventListener("click", () => {
-  if (activeCorner === blBtn.id) {
-    resetAll();
+  if (activeCorner === "grid__bl__btn") {
+    playClosingAnimation("reverse-animate-bottom-left");
   } else {
-    activateButton(blBtn, blContent, "Projects");
+    activateButton(blBtn, blContent, "Projects", "animate-bottom-left", "reverse-animate-bottom-left");
   }
 });
 
 brBtn.addEventListener("click", () => {
-  if (activeCorner === brBtn.id) {
-    resetAll();
+  if (activeCorner === "grid__br__btn") {
+    playClosingAnimation("reverse-animate-bottom-right");
   } else {
-    activateButton(brBtn, brContent, "Contact");
+    activateButton(brBtn, brContent, "More", "animate-bottom-right", "reverse-animate-bottom-right");
   }
 });
+

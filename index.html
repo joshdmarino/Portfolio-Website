@@ -34,7 +34,7 @@
           <button id="grid__tl__btn">About</button>
           <button id="grid__tr__btn">Experience</button>
           <button id="grid__bl__btn">Projects</button>
-          <button id="grid__br__btn">Contact</button>
+          <button id="grid__br__btn">More</button>
         <div class="separator"></div>
         <div id="color-mode">
           <div id="toggle-button"></div>
@@ -68,143 +68,203 @@
     <canvas id="candlestick-chart"></canvas>
     <nav id="grid">
       <div id="grid__tl">
-        <div id="grid__tl__content">
-          <div class="cards">
-            <div class="cards__content">
-              <article>
-                <img
-                  src="./assets/icons/experience.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <h2>Experience</h2>
-                <p>
-                  Experience
-                </p>
-              </article>
-              <p class="cards__content__text">
-                Boston Consulting Group (BCG)	- Incoming Summer Associate Consultant
-                </br>Goldman Sachs	- Risk Summer Analyst 
-                </br>Wells Fargo - Risk Summer Analyst
-              </p>
+        <div id="grid__tl__content" >
+          <section class="skills section">
+            <div class="container flex-center">
+              <div class="skills-info education-all">
+                <div class="education">
+                  <h4><label>Education</label></h4>
+                  <ul class="edu-list">
+                    <li class="item">
+                      <div class="edu-row">
+                        <span class="edu-institution">The Ohio State University, Fisher College of Business</span>
+                        <span class="edu-location">Columbus, OH</span>
+                      </div>
+                      <div class="edu-row">
+                        <span class="edu-degree">Bachelor of Science in Business Administration with Honors</span>
+                        <span class="edu-date">Anticipated May 2025</span>
+                      </div>
+                      <div class="edu-row">
+                        <span class="edu-details">Specialization: Finance | Minors: Engineering Sciences</span>
+                        <span class="edu-gpa">GPA 3.8</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="education">
+                  <h4><label>Honors & Awards</label></h4>
+                  <ul class = "edu-list">
+                    <li class="item">
+                      <p><span>Pace Setter Recipient</span></p>
+                      <p>Prestigious recognition granted to the top Fisher students who rank among the highest in their class and
+                        exemplify outstanding scholarship, leadership, and service to both Fisher College of Business and the broader community
+                        </p>
+                    </li>
+                    <li class="item">
+                      <p><span>Integrated Business and Engineering Honors Program</span></p>
+                      <p>Four-year honors program with 14 honors business students selected per year, emphasizing interdisciplinary communication, critical thinking, problem-solving, product development, corporate strategy, and teamwork through specialized business, engineering, and MBA courses</p>
+                    </li>
+                    <li class="item">
+                      <p><span>Morrill Scholarship Program</span></p>
+                      <p>Ohio State's premier merit scholarship program, rewarding academically talented students engaged in diversity-based leadership, service, and social justice activities</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="education">
+                  <h4><label>Skills</label></h4>
+                  <ul class="bars">
+                    <li class="bar">
+                      <div class = "info">
+                        <span>Python</span>
+                      </div>
+                    </li>
+                    <li class="bar">
+                      <div class = "info">
+                        <span>C/C++</span>
+                      </div>
+                    </li>
+                    <li class="bar">
+                      <div class = "info">
+                        <span>R</span>
+                      </div>
+                    </li>
+                    <li class="bar">
+                      <div class = "info">
+                        <span>SQL</span>
+                      </div>
+                    </li>
+                    <li class="bar">
+                      <div class = "info">
+                        <span>MATLAB</span>
+                      </div>
+                    </li>
+                    <li class="bar">
+                      <div class = "info">
+                        <span>VBA</span>
+                      </div>
+                    </li>
+                    <li class="bar">
+                      <div class = "info">
+                        <span>Java</span>
+                      </div>
+                    </li>
+                    <li class="bar">
+                      <div class = "info">
+                        <span>Tableau</span>
+                      </div>
+                    </li>
+                    <li class="bar">
+                      <div class = "info">
+                        <span>Swift</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div class="cards__content">
-              <article>
-                <img
-                  src="./assets/icons/education.png"
-                  alt="Education icon"
-                  class="icon"
-                />
-                <h2>Education</h2>
-                <p>The Ohio State University</p>
-                <p>B. Sc. Finance</p>
-              </article>
-              <p class="cards__content__text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Laboriosam, architecto?
-              </p>
-            </div>
-          </div>
+          </section>
         </div>
       </div>
       <div id="grid__tr">
         <div id="grid__tr__content">
           <div class="cards experience">
-            <article class="experience__skill">
-              <h2></h2>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>Python</h2>
-                  <p>Intermediate</p>
+            <div class="skills-info">
+              <div class="experience-card">
+                <div class="upper">
+                  <h3>Undergraduate Research Assistant</h3>
+                  <span>August 2024</span>
                 </div>
+                <div class="hr"></div>
+                <h4><label>Ohio State University</label></h4>
+                <p>
+                  <ul>
+                    <li>
+                      Design a pilot program to enable students to refine prosthetic and adaptive device prototypes, incorporating product testing, user validation, and pathways to commercialization                    
+                    </li>
+                    <li>
+                      Build collaboration with the Accessible Prosthetics Initiative (API) to provide user-centered design input and access to the limb-different community for product validation                    
+                    </li>
+                </p>
               </div>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>CSS</h2>
-                  <p>Experienced</p>
+              <div class="experience-card">
+                <div class="upper">
+                  <h3>Risk Summer Analyst</h3>
+                  <span>June 2023 - August 2023</span>
                 </div>
+                <div class="hr"></div>
+                <h4><label>Goldman Sachs</label></h4>
+                <p>
+                  <ul>
+                    <li>
+                      Reviewed and assigned initial margin to synthetic product groups based on complexity, size, and the client’s risk profile                     </li>
+                    <li>
+                      Administered client due diligence calls, vetting of hedge fund and quant fund clients, and weekly market updates                    </li>
+                </p>
               </div>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>JavaScript</h2>
-                  <p>Intermediate</p>
+              <div class="experience-card">
+                <div class="upper">
+                  <h3>Undergraduate Research Assistant</h3>
+                  <span>February 2022 - May 2023</span>
                 </div>
+                <div class="hr"></div>
+                <h4><label>Ohio State University</label></h4>
+                <p>
+                  <ul>
+                    <li>
+                      Assessed data on first-year engineers’ entrepreneurial approach, network systems, and the effects of TA technical feedback                    </li>
+                    <li>
+                      Compiled qualitative and quantitative data into various marketing materials for conferences and social media platforms                    </li>
+                </p>
               </div>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>C/C++</h2>
-                  <p>Intermediate</p>
+              <div class="experience-card">
+                <div class="upper">
+                  <h3>Undergraduate Student Assistant</h3>
+                  <span>August 2021 - May 2023</span>
                 </div>
+                <div class="hr"></div>
+                <h4><label>Ohio State University</label></h4>
+                <p>
+                  <ul>
+                    <li>
+                      Logged and dated thousands of packages, chemicals, and research documents to supplement graduate and faculty research projects
+                    <li>
+                      Conducted a hiring screening, chemical inventory assessment, research aid, and seminar setups for faculty, students, and professors                    </li>
+                    </li>
+                </p>
               </div>
-            </article>
-            <article class="experience__skill">
-              <h2></h2>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>Java</h2>
-                  <p>Intermediate</p>
+              <div class="experience-card">
+                <div class="upper">
+                  <h3>Innovation Analyst</h3>
+                  <span>September 2022 - November 2022</span>
                 </div>
+                <div class="hr"></div>
+                <h4><label>Center for Innovation Strategies</label></h4>
+                <p>
+                  <ul>
+                    <li>
+                      Collaborated with a Fortune 500 company to validate early-stage innovation concepts utilizing optimization algorithms                    </li>
+                    <li>
+                      Conducted market research and interviews to identify unmet customer needs using design thinking and lean startup methods                    </li>
+                </p>
               </div>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>VBA</h2>
-                  <p>Basic</p>
+              <div class="experience-card">
+                <div class="upper">
+                  <h3>Risk Summer Analyst</h3>
+                  <span>June 2022 – August 2022</span>
                 </div>
+                <div class="hr"></div>
+                <h4><label>Wells Fargo</label></h4>
+                <p>
+                  <ul>
+                    <li>
+                      Researched long-term inflation thresholds and impacts on credit risk, interest rates, and financial institution performance                    </li>
+                    <li>
+                      Built an analysis tool utilizing Bloomberg, Excel, and bootstrapping methodology to monitor implied forwards and forecasts                    </li>
+                </p>
               </div>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>R</h2>
-                  <p>Basic</p>
-                </div>
-              </div>
-              <div>
-                <img
-                  src="./assets/icons/checkmark.png"
-                  alt="Checkmark icon"
-                  class="icon"
-                />
-                <div>
-                  <h2>Swift</h2>
-                  <p>Experienced</p>
-                </div>
-              </div>
-            </article>
-          </div>
+            </div>
+            </div>
+          </div>          
         </div>
       </div>
       <div id="grid__bl">
@@ -214,9 +274,9 @@
               <img
                 class="project__img project-1"
                 src="assets/portfolio-projects/project-1-dark.png"
-                alt="Cath: The First Catheterization Tracker"
+                alt="Project 1"
               />
-              <h2 class="project__title">Cath: The First Catheterization Tracker</h2>
+              <h2 class="project__title">Cath - The First Catheterization Tracker</h2>
               <button
                 class="btn"
                 onclick="window.location.href='https://apps.apple.com/us/app/cath/id6499559893'"
@@ -225,23 +285,62 @@
               </button>
               <button
                 class="btn"
-                onclick="window.location.href='https://github.com/joshdmarino/Disability/tree/a028963eca777a3505d098a4074669c7640a55f0/Cath'"
+                onclick="window.location.href='https://github.com/joshdmarino/Disability/tree/1ed78089fbb99d81bf3942a4b6dfd76a8f174963/Cath'"
               >
                 GitHub
               </button>
             </div>
-            <button class="arrow" onclick="navigateProject(-1)">
-              &#10094;
-            </button>
-            <button class="arrow" onclick="navigateProject(1)">&#10095;</button>
+            <div class="project p-2">
+              <img
+                class="project__img project-2"
+                src="assets/portfolio-projects/project-2-dark.png"
+                alt="Project 2"
+              />
+              <h2 class="project__title">Discounted Cash Flow Builder</h2>
+              <button
+                class="btn"
+                onclick="window.location.href='https://netlify.com'"
+              >
+                Demo Coming Soon
+              </button>
+              <button
+                class="btn"
+                onclick="window.location.href='https://github.com/joshdmarino/Finance/blob/2de5c02a6b211291f2e0e5842495d663f8d1e73a/Trading%20Bots/Alpaca%20API/DCF%20Bot.py'"
+              >
+                GitHub
+              </button>
+            </div>
+            <div class="project p-3">
+              <img
+                class="project__img project-3"
+                src="assets/portfolio-projects/project-3-dark.png"
+                alt="Project 3"
+              />
+              <h2 class="project__title">Twitter Sentiment Bot</h2>
+              <button
+                class="btn"
+                onclick="window.location.href='https://netlify.com'"
+              >
+              Demo Coming Soon
+              </button>
+              <button
+                class="btn"
+                onclick="window.location.href='https://github.com'"
+              >
+                GitHub
+              </button>
+            </div>
+            <div class="arrow-container">
+              <button class="arrow" onclick="navigateProject(-1)">&#10094;</button>
+              <button class="arrow" onclick="navigateProject(1)">&#10095;</button>
+            </div>
           </div>
         </div>
       </div>
       <div id="grid__br">
         <div id="grid__br__content">
-          <h5 class="contact-text">Get In Touch</h5>
-          <h2 class="contact-text">Contact Me</h2>
-          <div>
+          <h2 class="contact-text">Get In Touch & View My Blogs</h2>
+<br>          <div>
             <button
               class="btn btn-contact"
               onclick="window.location.href='mailto:marino.210@osu.edu'"
@@ -253,6 +352,20 @@
               onclick="window.location.href='https://www.linkedin.com/in/joshmarino/'"
             >
               LinkedIn
+            </button>
+          </div>
+          <div>
+            <button
+              class="btn btn-contact"
+              onclick="window.location.href='https://impulsiveprojects.substack.com'"
+            >
+              Substack
+            </button>
+            <button
+              class="btn btn-contact"
+              onclick="window.location.href='https://everydayquad.com'"
+            >
+              EverydayQuad
             </button>
           </div>
         </div>

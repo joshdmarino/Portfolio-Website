@@ -35,6 +35,7 @@ html{
   padding: 0;
   width: 100%;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* Update grid to fit screen exactly */
@@ -45,7 +46,6 @@ html{
   grid-template-columns: 1fr 1fr;
   height: 100%;
   width: 100%;
-  overflow: hidden;
 }
 
 #grid__tl__btn,
@@ -59,6 +59,7 @@ html{
   border: var(--border);
   position: static;
   display: flex;
+  align-items: center;
   justify-content: center;
   cursor: pointer;
   text-align: center;
@@ -74,9 +75,7 @@ html{
 #grid__bl__content,
 #grid__br__content {
   position: absolute;
-  text-align: center;
   transition: transform 0.3s ease-in-out;
-  color: var(--text-alt);
 }
 
 #grid__tl__btn:active,
@@ -87,12 +86,10 @@ html{
 }
 
 
+
 /* TOP LEFT CORNER CONTENT */
 
 #grid__tl__content {
-  width: 30vw;
-  top: 10vh;
-  left: 0;
   transform: translateX(-100vw) translateY(-100vh);
 }
 
@@ -141,10 +138,10 @@ article p {
 
 #grid__tr__content {
   width: 30vw;
-  top: 10vh;
   right: 0;
   transform: translateX(100vw) translateY(-100vh);
 }
+
 
 .experience {
   display: flex;
@@ -198,6 +195,14 @@ article p {
   left: 0;
   transform: translateX(-100vw) translateY(100vh);
 }
+#grid__bl__content__projects {
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Ensure the arrows and content are arranged horizontally */
+  align-items: center; /* Vertically center the arrows and content */
+  justify-content: center; /* Center all items horizontally */
+  gap: 1rem; /* Add space between the arrows and project content */
+}
 
 .project {
   width: 70%;
@@ -210,6 +215,7 @@ article p {
   background: var(--bg-alt);
 }
 
+
 .project__img {
   width: 100%;
 }
@@ -219,6 +225,7 @@ article p {
   margin: 0;
   padding: 0.3rem 0;
   font-size: 1rem;
+  text-align: center;
 }
 
 button {
@@ -239,9 +246,34 @@ button {
 .arrow {
   border: var(--border);
   width: 3rem;
-  height: 2rem;
-  margin: 0;
-  padding: 0.2rem 0;
+  height: 3rem;
+  padding: 0;
+  background: rgb(245, 245, 245);
+  color: #333;
+  transition: all 300ms ease;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.arrow-container {
+  display: flex;
+  padding: 1rem;
+  justify-content: center; /* Align arrows horizontally */
+  align-items: center; /* Center arrows vertically */
+  gap: 1rem; /* Add space between the arrows */
+}
+
+.arrow:first-of-type {
+  left: 0; /* Positions the left arrow */
+  transform: translate(-50%, -50%); /* Ensures proper centering */
+}
+
+.arrow:last-of-type {
+  right: 0; /* Positions the right arrow */
+  transform: translate(50%, -50%); /* Ensures proper centering */
 }
 
 .btn,
@@ -326,6 +358,7 @@ button {
   background: var(--bg-alt); /* Background color, adapt to your theme */
   padding: 0rem; /* Padding for spacing */
   width: 100%;
+  padding: .5rem;
   max-width: none;
   margin: 0;
   left: 0;
@@ -358,11 +391,13 @@ button {
   height: 1rem;
   width: 1px;
   background: var(--text);
+  
 }
 
 #times {
   display: flex;
   gap: 0.5rem;
+  
 }
 
 #times span {
@@ -398,6 +433,8 @@ button {
 
 #nav-buttons {
   display: flex;
+  align-items: center; 
+  justify-content: center; 
   gap: 0.5rem;
 }
 
@@ -409,6 +446,7 @@ button {
   padding: 0.25rem 0.5rem;
   font-weight: 0.8rem;
   cursor: pointer;
+  flex:0;
 }
 
 #nav-buttons button:hover {
@@ -477,3 +515,316 @@ button {
   margin-top: 0.3rem;
 }
 
+:root{
+  --first-color: #0e2431;
+  --second-color: #6a59d1;
+  --third-color: #777;
+
+  --hover-color: #614fd0;
+
+  --body-bg-color: #fefefe;
+  --card-bg-color: #faf9f6;
+  --modal-bg-color: #fff;
+  --bg-transparent-color: rgba(0, 0, 0, 0.1);
+  --transparent-color-01: rgba(0, 0, 0, 0.1);
+  --transparent-color-02: rgba(106, 89, 209, 0.1);
+  --line-color: #d7d7d7;
+
+  --color-filter: invert(1);
+
+  --box-shadow: 0px 0pxx 20px rgb(0 0 0 / 10%);
+
+  --small-font-size: 0.9em;
+  --normal-font-size: 1em;
+
+  --scroll-bar-color: #c5cadf;
+}
+
+
+.skills .container .content{
+  width: 100%;
+}
+
+.skills-description{
+  max-width: 700px;
+  margin-bottom: 50px;
+}
+
+.skills-description h3 {
+font-size: 2em;
+margin-bottom: 5px;
+}
+
+.skills-info{
+  display: flex; /* Align elements horizontally */
+  flex-direction: row; /* Horizontal layout */
+  justify-content: space-around; /* Space between elements */
+  gap: 2rem; /* Optional spacing */
+  margin: 0 auto; /* Center alignment */
+  list-style: none; /* Remove bullet points */
+}
+
+.skills-info .education {
+  flex: 1; /* Make elements share equal space */
+}
+
+.skills-info h4 {
+  margin-bottom: 10px;
+}
+
+.skills-info ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Reset padding for lists */
+  font-size: 0.65rem;
+}
+#grid__tl__content {
+  display: flex;
+  flex-direction: column; /* Stack child elements vertically */
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Full height of container */
+  width: 100%; /* Full width of container */
+  text-align: center; /* Center text alignment */
+  padding: 1rem; /* Optional padding for spacing */
+  box-sizing: border-box; /* Ensure padding is included in dimensions */
+}
+
+/* Updated spacing for the white cards in the About section */
+#grid__tl__content .edu-list {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center cards horizontally */
+  gap: 0.5rem; /* Reduce spacing between cards */
+  margin: 0 auto; /* Center the list container itself */
+  padding: 0.5rem; /* Reduce padding around the list */
+  width: 100%; /* Take full container width */
+  max-width: 800px; /* Prevent cards from stretching too wide */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+#grid__tl__content .edu-list .item {
+  width: 100%; /* Take full width of the list container */
+  max-width: 700px; /* Limit the card width for readability */
+  text-align: left; /* Align text inside the card */
+  margin: 0.5rem 0; /* Reduce vertical spacing between items */
+  padding: 10px; /* Add some padding inside the cards */
+}
+
+
+
+.skills-info h4 label{
+  background: var(--second-color);
+  color: #fff;
+  font-size: var(--normal-font-size);
+  font-weight: 400;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+.education-all{
+  margin-bottom: 80;
+}
+
+.edu-list {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+}
+
+.item {
+  margin-bottom: 1rem;
+  width: 70%;
+}
+
+.edu-row {
+  display: flex;
+  justify-content: space-between; /* Keep left and right alignment */
+  align-items: center; /* Align elements neatly */
+  margin-bottom: 0.25rem;
+  flex-wrap: nowrap;
+  gap: 1
+}
+
+.edu-institution, .edu-location,
+.edu-degree, .edu-date,
+.edu-details, .edu-gpa {
+  font-size: .6rem;
+  line-height:1.2;
+}
+
+.edu-institution, .edu-location {
+  font-weight: bold;
+  color: black;
+}
+
+.edu-degree, .edu-date,
+.edu-details, .edu-gpa {
+  font-style: italic;
+  color: black;
+}
+
+.edu-institution, .edu-degree, .edu-details {
+  text-align: left; /* Ensure these remain left-aligned */
+  font-size: 0.6rem; /* Match the downsized font size */
+  width: 100%;
+
+}
+
+.edu-location, .edu-date, .edu-gpa {
+  text-align: right; /* Align these elements to the right */
+  font-size: 0.6rem; /* Match the downsized font size */
+  width: 100%;
+}
+.edu-list .item{
+  background: var(--card-bg-color);
+  box-shadow: var(--box-shadow);
+  border-bottom: 3px solid var(--second-color);
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 6px;
+  transition: .3s ease;
+}
+
+
+.edu-list .item .year{
+  font-size: var(--small-font-size);
+  margin-bottom: 5px;
+  color: var(--third-color);
+}
+
+.edu-list .item p{
+  color: var(--third-color);
+  font-size: .5rem;
+}
+
+.edu-list .item p span{
+  color: var(--first-color);
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+.bars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  grid-gap: 1rem; /* Add spacing between items */
+  margin: 0 auto; /* Center alignment */
+  padding: 0; /* Reset padding */
+}
+
+.bar{
+  background: var(--card-bg-color);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  transition: .3s ease;
+  text-align: center;
+  font-size: 0.8rem;
+  border-bottom: 3px solid var(--second-color);
+}
+
+.bar .info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: var(--small-font-size);
+  color: var(--first-color);
+}
+
+.bar .info span{
+  font-weight: 500;
+  font-size: 0.7rem;
+}
+
+
+.cards.experience {
+  display: flex;
+  flex-direction: column; /* Stack heading and both sets of cards vertically */
+  align-items: center;
+  gap: 2rem; /* Add spacing between sections */
+}
+
+.skills-info {
+  display: flex; /* Use flexbox for vertical stacking */
+  flex-direction: column; /* Stack items vertically */
+  gap: 1rem; /* Add spacing between cards */
+  width: 100%; /* Full width of the container */
+}
+
+.skills-description {
+  width: 100%; /* Ensure full-width heading */
+  text-align: center; /* Center-align text */
+  margin-bottom: 1rem; /* Add space below heading */
+}
+
+/* Add hover effect for Work & Experience heading and cards */
+.skills-description {
+  transition: transform 0.3s ease-in-out; /* Smooth scaling effect */
+}
+
+.skills-description:hover {
+  transform: scale(1.05); /* Scale up slightly on hover */
+}
+
+.experience-card {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  background: var(--card-bg-color);
+  border-left: 5px solid var(--second-color); /* Highlighted border */
+  padding: 1rem 1.5rem; /* Adjust spacing */
+  border-radius: 6px;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.experience-card .upper {
+  display: flex;
+  justify-content: space-between; /* Space out title and date */
+  align-items: center;
+}
+
+.experience-card .upper h3 {
+  font-size: .6rem;
+  margin: 0;
+  color: var(--first-color);
+}
+
+.experience-card .upper span {
+  font-size: 0.45rem;
+  color: var(--first-color);
+}
+
+/* Separator line */
+.experience-card .hr {
+  height: 1px;
+  background: var(--second-color);
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+/* Employer and points section */
+.experience-card h4 {
+  font-size: .5rem;
+  margin: 0 0 0.5rem;
+  color: var(--first-color);
+}
+
+.experience-card ul {
+  list-style-type: disc;
+  margin: 0;
+  padding-left: 1rem; /* Indent bullet points */
+}
+
+.experience-card ul li {
+  font-size: 0.45rem;
+  color: var(--third-color);
+  margin-bottom: 0.3rem; /* Space between points */
+}
+
+
+.edu-list, .item:hover, .bar:hover, .experience-card:hover{
+  transform: scale(1.05);
+}
