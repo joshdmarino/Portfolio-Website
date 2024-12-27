@@ -35,7 +35,6 @@ html{
   padding: 0;
   width: 100%;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 /* Update grid to fit screen exactly */
@@ -325,6 +324,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   pointer-events: none; /* Ensure it doesn't capture clicks */
 }
 
@@ -352,18 +352,26 @@ button {
 
 /* Top Bar */
 #top-bar {
-  position: sticky; /* Keeps the top bar visible while scrolling */
-  top: 0; /* Sticks it to the top of the viewport */
-  z-index: 100; /* Ensures it stays above other elements */
-  background: var(--bg-alt); /* Background color, adapt to your theme */
-  padding: 0rem; /* Padding for spacing */
-  width: 100%;
-  padding: .5rem;
-  max-width: none;
-  margin: 0;
-  left: 0;
-  box-sizing: border-box;
+  position: fixed; /* Fix the bar at the top of the viewport */
+  top: 0; /* Position it at the top */
+  left: 0; /* Align to the left edge */
+  z-index: 100; /* Ensure it stays above other elements */
+  width: 100%; /* Stretch the bar across the screen */
+  background: var(--bg-alt); /* Keep the existing background color */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for separation */
 }
+
+/* Ensure no layout shift when the bar is fixed */
+body {
+  padding-top: var(--top-bar-height, 4rem); /* Add padding equal to the top bar height */
+}
+
+
+/* Ensure no layout shift when the bar is fixed */
+body {
+  padding-top: var(--top-bar-height, 4rem); /* Add padding equal to the top bar height */
+}
+
 
 
 /* TOP ROW */
@@ -827,4 +835,152 @@ margin-bottom: 5px;
 
 .edu-list, .item:hover, .bar:hover, .experience-card:hover{
   transform: scale(1.05);
+}
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  #top-bar {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align elements */
+    padding: 0.5rem; /* Add padding for spacing */
+    gap: 0.5rem; /* Add spacing between rows */
+  }
+
+  #top-row,
+  #bottom-row {
+    display: flex;
+    flex-direction: row; /* Arrange elements horizontally */
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* Full width for rows */
+    gap: 0.5rem; /* Spacing between elements */
+  }
+
+  #top-row img,
+  #bottom-row img {
+    height: 1.2rem; /* Scale down images */
+    width: 1.2rem; /* Maintain aspect ratio */
+  }
+
+  #nav-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Wrap buttons */
+    justify-content: center; /* Center align */
+    gap: 0.25rem; /* Reduce spacing for condensed layout */
+  }
+
+  #nav-buttons button {
+    padding: 0.2rem 0.4rem; /* Smaller padding */
+    font-size: 0.8rem; /* Smaller font size */
+    flex: 1 1 calc(50% - 0.5rem); /* Distribute buttons evenly */
+  }
+
+  #search-icon,
+  #plus-icon {
+    display: none; /* Hide unnecessary icons on small screens */
+  }
+
+  #branding {
+    text-align: center; /* Center branding text */
+    gap: 0.2rem; /* Reduce spacing */
+  }
+
+  #branding h1 {
+    font-size: 1rem; /* Adjust font size */
+  }
+
+  #ohlc {
+    font-size: 0.8rem; /* Adjust text size */
+    gap: 0.3rem; /* Reduce gap */
+  }
+
+  #profile-image {
+    height: 1rem; /* Reduce profile image size */
+    width: 1rem; /* Maintain aspect ratio */
+  }
+
+  #bottom-text {
+    flex-wrap: wrap; /* Wrap text for small screens */
+    justify-content: center; /* Center align */
+    gap: 0.2rem; /* Reduce spacing */
+  }
+
+  #volume, #volume__number {
+    font-size: 0.7rem; /* Reduce font size for volume text */
+  }
+}
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  #top-bar {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align elements */
+    padding: 0.5rem; /* Add padding for spacing */
+    gap: 0.5rem; /* Add spacing between rows */
+  }
+
+  #top-row,
+  #bottom-row {
+    display: flex;
+    flex-direction: row; /* Arrange elements horizontally */
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* Full width for rows */
+    gap: 0.5rem; /* Spacing between elements */
+  }
+
+  #top-row img,
+  #bottom-row img {
+    height: 1.2rem; /* Scale down images */
+    width: 1.2rem; /* Maintain aspect ratio */
+  }
+
+  #nav-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Wrap buttons */
+    justify-content: center; /* Center align */
+    gap: 0.25rem; /* Reduce spacing for condensed layout */
+  }
+
+  #nav-buttons button {
+    padding: 0.2rem 0.4rem; /* Smaller padding */
+    font-size: 0.8rem; /* Smaller font size */
+    flex: 1 1 calc(50% - 0.5rem); /* Distribute buttons evenly */
+  }
+
+  #search-icon,
+  #plus-icon {
+    display: none; /* Hide unnecessary icons on small screens */
+  }
+
+  #branding {
+    text-align: center; /* Center branding text */
+    gap: 0.2rem; /* Reduce spacing */
+  }
+
+  #branding h1 {
+    font-size: 1rem; /* Adjust font size */
+  }
+
+  #ohlc {
+    font-size: 0.8rem; /* Adjust text size */
+    gap: 0.3rem; /* Reduce gap */
+  }
+
+  #profile-image {
+    height: 1rem; /* Reduce profile image size */
+    width: 1rem; /* Maintain aspect ratio */
+  }
+
+  #bottom-text {
+    flex-wrap: wrap; /* Wrap text for small screens */
+    justify-content: center; /* Center align */
+    gap: 0.2rem; /* Reduce spacing */
+  }
+
+  #volume, #volume__number {
+    font-size: 0.7rem; /* Reduce font size for volume text */
+  }
 }
