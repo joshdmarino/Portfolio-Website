@@ -249,34 +249,3 @@ brBtn.addEventListener("click", () => {
     activateButton(brBtn, brContent, "More", "animate-bottom-right", "reverse-animate-bottom-right");
   }
 });
-
-// Detect mobile device
-function isMobileDevice() {
-  return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-}
-
-// Add a blocker or modify top-bar behavior
-function handleMobileTopBar() {
-  if (isMobileDevice()) {
-    // Add a blocker for mobile devices
-    const blocker = document.createElement('div');
-    blocker.style.position = 'fixed';
-    blocker.style.top = '0';
-    blocker.style.left = '0';
-    blocker.style.width = '100%';
-    blocker.style.height = '4rem'; // Adjust to match your top-bar height
-    blocker.style.background = 'var(--bg-alt)';
-    blocker.style.zIndex = '101'; // Ensure it's above the content
-    document.body.appendChild(blocker);
-
-    // Adjust the top-bar
-    const topBar = document.getElementById('top-bar');
-    topBar.style.position = 'fixed';
-    topBar.style.top = '0';
-    topBar.style.width = '100%';
-    topBar.style.zIndex = '102'; // Above the blocker
-  }
-}
-
-// Execute on page load
-document.addEventListener('DOMContentLoaded', handleMobileTopBar);
