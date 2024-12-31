@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./css/animation.css" />
     <link rel="stylesheet" href="./css/color-mode.css" />
   </head>
-  <body>
+  <body >
     <header id="top-bar">
       <!-- Top Row -->
       <div id="top-row">
@@ -35,7 +35,6 @@
           <button id="grid__tr__btn">Experience</button>
           <button id="grid__bl__btn">Projects</button>
           <button id="grid__br__btn">More</button>
-        <div class="separator"></div>
         <div id="color-mode">
           <div id="toggle-button"></div>
         </div>
@@ -43,7 +42,7 @@
     
       <!-- Bottom Row -->
       <div id="bottom-row">
-        <img src="/assets/icons/profile-photo.jpg" alt="Profile Image" id="profile-image" />
+        <img src="./assets/icons/profile-photo.jpg" alt="Profile Image" id="profile-image" />
         <div id="bottom-text">
           <span class="name">Josh Marino's Portfolio</span>
           <span class="dot">·</span>
@@ -67,8 +66,8 @@
     
     <canvas id="candlestick-chart"></canvas>
     <nav id="grid">
-      <div id="grid__tl">
-        <div id="grid__tl__content" >
+      <div id="grid__tl" >
+        <div id="grid__tl__content"  >
           <section class="skills section">
             <div class="container flex-center">
               <div class="skills-info education-all">
@@ -112,7 +111,7 @@
                 </div>
                 <div class="education">
                   <h4><label>Skills</label></h4>
-                  <ul class="bars">
+                  <ul class="bars" style="padding-top: 8px;">
                     <li class="bar">
                       <div class = "info">
                         <span>Python</span>
@@ -165,7 +164,7 @@
           </section>
         </div>
       </div>
-      <div id="grid__tr">
+      <div id="grid__tr" >
         <div id="grid__tr__content">
           <div class="cards experience">
             <div class="skills-info">
@@ -270,10 +269,10 @@
       <div id="grid__bl">
         <div id="grid__bl__content">
           <div id="grid__bl__content__projects">
-            <div class="project p-1">
+            <div class="project p-1" id="project.p1">
               <img
                 class="project__img project-1"
-                src="assets/portfolio-projects/project-1-dark.png"
+                src="./assets/portfolio-projects/project-1-dark.png"
                 alt="Project 1"
               />
               <h2 class="project__title">Cath - The First Catheterization Tracker</h2>
@@ -293,7 +292,7 @@
             <div class="project p-2">
               <img
                 class="project__img project-2"
-                src="assets/portfolio-projects/project-2-dark.png"
+                src="./assets/portfolio-projects/project-2-dark.png"
                 alt="Project 2"
               />
               <h2 class="project__title">Discounted Cash Flow Builder</h2>
@@ -313,7 +312,7 @@
             <div class="project p-3">
               <img
                 class="project__img project-3"
-                src="assets/portfolio-projects/project-3-dark.png"
+                src="./assets/portfolio-projects/project-3-dark.png"
                 alt="Project 3"
               />
               <h2 class="project__title">Twitter Sentiment Bot</h2>
@@ -343,9 +342,9 @@
 <br>          <div>
             <button
               class="btn btn-contact"
-              onclick="window.location.href='https://github.com/joshdmarino'"
+              onclick="window.location.href='mailto:marino.210@osu.edu'"
             >
-              GitHub
+              Email
             </button>
             <button
               class="btn btn-contact"

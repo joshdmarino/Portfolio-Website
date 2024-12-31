@@ -8,12 +8,29 @@ body {
   font-family: "Poppins", sans-serif;
   background: var(--bg);
   color: var(--text);
-  height: 100%;
   width: 100%;
   margin: 0;
   -webkit-tap-highlight-color: transparent;
 }
+::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar */
+}
+h1,
+h2,
+h5,
+p {
+  margin: 0;
+}
 
+.icon {
+  height: 2rem;
+  width: 2rem;
+  margin: 0 0.5rem;
+}
+
+/* GRID COMMON STYLES */
+
+/* General settings for body to avoid scrollbars */
 html{
   margin: 0;
   padding: 0;
@@ -23,12 +40,11 @@ html{
 
 /* Update grid to fit screen exactly */
 #grid {
-  position: absolute;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
-  height: 100%;
   width: 100%;
+  
 }
 
 #grid__tl__btn,
@@ -59,7 +75,17 @@ html{
 #grid__br__content {
   position: absolute;
   transition: transform 0.3s ease-in-out;
+  display: none;
 }
+
+#grid__tl__btn:active,
+#grid__br__btn:active, 
+#grid__tr__btn:active,
+#grid__bl__btn:active{
+  transform:scale(1.05);
+}
+
+
 
 /* TOP LEFT CORNER CONTENT */
 
@@ -67,12 +93,102 @@ html{
   transform: translateX(-100vw) translateY(-100vh);
 }
 
+article {
+  background: rgb(245, 245, 245);
+  font-size: 0.8rem;
+  list-style: none;
+  border: var(--border);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  margin: 1rem;
+  width: 8.75rem;
+  min-width: 8.75rem;
+}
+
+article h2 {
+  font-size: 1rem;
+  padding: 0.3rem;
+}
+
+article p {
+  padding-bottom: 0.3rem;
+}
+
+article h2,
+article p {
+  color: #333;
+}
+
+.cards {
+  padding: 0;
+}
+
+.cards__content {
+  display: flex;
+  align-items: center;
+}
+
+.cards__content__text {
+  color: var(--text);
+  text-align: left;
+  margin: 0 1rem;
+}
+
 /* TOP RIGHT CORNER CONTENT */
 
 #grid__tr__content {
+  display: flex;
+  flex-direction: column; /* Stack child elements vertically */
+  justify-content: flex-start !important;
+  padding-top: 50px;
   width: 30vw;
   right: 0;
   transform: translateX(100vw) translateY(-100vh);
+}
+
+
+.experience {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.experience__skill {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem;
+  gap: 0.2rem;
+  margin: 0;
+  width: fit-content;
+}
+
+.experience__skill div {
+  display: flex;
+  align-items: center;
+  width: 13.5rem;
+}
+
+.experience__skill div img {
+  padding: 0;
+  margin-right: 0.5rem;
+}
+
+.experience__skill div h2 {
+  text-align: left;
+}
+
+.experience__skill div p {
+  padding: 0;
+}
+
+.experience__skill div h2,
+.experience__skill div p {
+  font-size: 0.8rem;
+}
+
+.experience__skill div div {
+  justify-content: space-between;
 }
 
 /* BOTTOM LEFT CORNER CONTENT */
@@ -86,11 +202,12 @@ html{
 #grid__bl__content__projects {
   position: relative;
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  gap: 1rem; 
+  flex-direction: column; /* Ensure the arrows and content are arranged horizontally */
+  align-items: center; /* Vertically center the arrows and content */
+  justify-content: center; /* Center all items horizontally */
+  gap: 1rem; /* Add space between the arrows and project content */
 }
+
 
 .project {
   width: 70%;
@@ -102,6 +219,7 @@ html{
   border: var(--border);
   background: var(--bg-alt);
 }
+
 
 .project__img {
   width: 100%;
@@ -148,19 +266,19 @@ button {
 .arrow-container {
   display: flex;
   padding: 1rem;
-  justify-content: center; 
-  align-items: center; 
-  gap: 1rem; 
+  justify-content: center; /* Align arrows horizontally */
+  align-items: center; /* Center arrows vertically */
+  gap: 1rem; /* Add space between the arrows */
 }
 
 .arrow:first-of-type {
-  left: 0; 
-  transform: translate(-50%, -50%); 
+  left: 0; /* Positions the left arrow */
+  transform: translate(-50%, -50%); /* Ensures proper centering */
 }
 
 .arrow:last-of-type {
-  right: 0; 
-  transform: translate(50%, -50%); 
+  right: 0; /* Positions the right arrow */
+  transform: translate(50%, -50%); /* Ensures proper centering */
 }
 
 .btn,
@@ -185,16 +303,22 @@ button {
 /* BOTTOM RIGHT CORNER CONTENT */
 
 #grid__br__content {
+  top: 0;
   bottom: 0;
   right: 0vw;
   transform: translateX(100vw) translateY(100vh);
 }
 
 #grid__br__content div {
+
   display: flex;
   margin: 0.5rem auto;
   gap: 1.2rem;
   width: 17rem;
+}
+
+.contact-text {
+  color: var(--text);
 }
 
 .btn-contact {
@@ -202,21 +326,38 @@ button {
   border-radius: 2rem;
 }
 
-/* BACKGROUND CONTENT */
-
 #candlestick-chart {
-  position: fixed;
-  top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   overflow: hidden;
-  pointer-events: none; 
+  pointer-events: none; /* Ensure it doesn't capture clicks */
+}
+
+#ticker {
+  position: fixed; /* Keeps the text fixed in the top-left corner */
+  top: 30px; /* Adjust to add spacing from the top */
+  left: 90px; /* Adjust to add spacing from the left */
+  z-index: 100; /* Ensures it stays above other elements */
+  font-family: "Poppins", sans-serif; /* Match your font style */
+  font-size: 0.5rem; /* Adjust the font size */
+  color: var(--text); /* Use your theme color variable */
+}
+
+#ohlc {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  gap: 15px;
+}
+
+#ohlc span {
+  color: var(--text-alt); /* Secondary text color */
 }
 
 /* Top Bar */
 #top-bar {
-  position: sticky; /* Keeps the top bar visible while scrolling */
+  position:fixed;
   top: 0; /* Sticks it to the top of the viewport */
   z-index: 100; /* Ensures it stays above other elements */
   background: var(--bg-alt); /* Background color, adapt to your theme */
@@ -228,6 +369,7 @@ button {
   left: 0;
   box-sizing: border-box;
 }
+
 
 /* TOP ROW */
 #top-row {
@@ -257,6 +399,11 @@ button {
   
 }
 
+#times {
+  display: flex;
+  gap: 0.5rem;
+  
+}
 
 #times span {
   font-size: 0.9rem;
@@ -266,6 +413,27 @@ button {
 #times span.highlight {
   color: blue;
   font-weight: 600;
+}
+
+#branding {
+  display: flex;
+  flex-direction: column; /* Stacks the name and OHLC vertically */
+  justify-content: center;
+}
+
+#branding h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text); /* Adjusted to match theme */
+}
+
+#branding #ohlc {
+  display: flex;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-alt);
+  margin-top: 0.3rem;
 }
 
 #nav-buttons {
@@ -417,10 +585,10 @@ margin-bottom: 5px;
 #grid__tl__content {
   display: flex;
   flex-direction: column; /* Stack child elements vertically */
-  justify-content: center;
-  align-items: center;
-  height: 100%; /* Full height of container */
+  justify-content: start !important;
+  align-items: center;/* Full height of container */
   width: 100%; /* Full width of container */
+  height: 100%;
   text-align: center; /* Center text alignment */
   padding: 1rem; /* Optional padding for spacing */
   box-sizing: border-box; /* Ensure padding is included in dimensions */
@@ -485,7 +653,7 @@ margin-bottom: 5px;
 .edu-institution, .edu-location,
 .edu-degree, .edu-date,
 .edu-details, .edu-gpa {
-  font-size: .6rem;
+  font-size: .9rem;
   line-height:1.2;
 }
 
@@ -499,17 +667,22 @@ margin-bottom: 5px;
   font-style: italic;
   color: black;
 }
-
-.edu-institution, .edu-degree, .edu-details {
+.edu-institution{
   text-align: left; /* Ensure these remain left-aligned */
-  font-size: 0.6rem; /* Match the downsized font size */
+  font-size: 0.9rem; /* Match the downsized font size */
+  width: 100%;
+}
+
+ .edu-degree, .edu-details {
+  text-align: left; /* Ensure these remain left-aligned */
+  font-size: 0.7rem; /* Match the downsized font size */
   width: 100%;
 
 }
 
 .edu-location, .edu-date, .edu-gpa {
   text-align: right; /* Align these elements to the right */
-  font-size: 0.6rem; /* Match the downsized font size */
+  font-size: 0.7rem; /* Match the downsized font size */
   width: 100%;
 }
 .edu-list .item{
@@ -522,7 +695,6 @@ margin-bottom: 5px;
   transition: .3s ease;
 }
 
-
 .edu-list .item .year{
   font-size: var(--small-font-size);
   margin-bottom: 5px;
@@ -531,12 +703,12 @@ margin-bottom: 5px;
 
 .edu-list .item p{
   color: var(--third-color);
-  font-size: .5rem;
+  font-size: .7rem;
 }
 
 .edu-list .item p span{
   color: var(--first-color);
-  font-size: .75rem;
+  font-size: .9rem;
   font-weight: 500;
 }
 
@@ -545,7 +717,6 @@ margin-bottom: 5px;
   grid-template-columns: repeat(3, 1fr); /* Three columns */
   grid-gap: 1rem; /* Add spacing between items */
   margin: 0 auto; /* Center alignment */
-  padding: 0; /* Reset padding */
 }
 
 .bar{
@@ -571,7 +742,7 @@ margin-bottom: 5px;
 
 .bar .info span{
   font-weight: 500;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
 }
 
 
@@ -624,13 +795,13 @@ margin-bottom: 5px;
 }
 
 .experience-card .upper h3 {
-  font-size: .6rem;
+  font-size: .9rem;
   margin: 0;
   color: var(--first-color);
 }
 
 .experience-card .upper span {
-  font-size: 0.45rem;
+  font-size: 0.7rem;
   color: var(--first-color);
 }
 
@@ -644,7 +815,7 @@ margin-bottom: 5px;
 
 /* Employer and points section */
 .experience-card h4 {
-  font-size: .5rem;
+  font-size: .75rem;
   margin: 0 0 0.5rem;
   color: var(--first-color);
 }
@@ -656,7 +827,7 @@ margin-bottom: 5px;
 }
 
 .experience-card ul li {
-  font-size: 0.45rem;
+  font-size: 0.7rem;
   color: var(--third-color);
   margin-bottom: 0.3rem; /* Space between points */
 }
@@ -681,7 +852,7 @@ margin-bottom: 5px;
     flex-direction: row; /* Arrange elements horizontally */
     flex-wrap: wrap; /* Allow wrapping for small screens */
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%; /* Full width for rows */
     gap: 0.5rem; /* Spacing between elements */
   }
@@ -738,4 +909,14 @@ margin-bottom: 5px;
   #volume, #volume__number {
     font-size: 0.7rem; /* Reduce font size for volume text */
   }
+  #grid__tl__content {
+    padding:0 20px;
+  }
+  .skills-info{
+    max-width: 95%;
+  }
+
+
 }
+
+

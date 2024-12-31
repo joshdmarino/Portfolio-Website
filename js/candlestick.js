@@ -12,6 +12,26 @@ function resizeCanvas() {
   canvas.height = window.innerHeight - topBarHeight; // Subtract top bar height from canvas height
 }
 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const topBar = document.getElementById('top-bar'); 
+  const candlestickChart = document.getElementById('candlestick-chart'); 
+  const grid = document.getElementById('grid'); 
+
+  function adjustChartPosition() {
+    const topBarHeight = topBar.offsetHeight;
+    
+    candlestickChart.style.position = 'absolute';  
+    candlestickChart.style.top = `${topBarHeight}px`;
+    grid.style.position = 'absolute';  
+    grid.style.top = `${topBarHeight}px`; 
+  }
+
+  window.addEventListener('load', adjustChartPosition);
+  window.addEventListener('resize', adjustChartPosition);
+});
+
+
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 

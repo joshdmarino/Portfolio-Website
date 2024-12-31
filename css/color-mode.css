@@ -18,7 +18,7 @@ body:after {
   --text: #333; /* Dark text for light mode */
   --text-alt: #666; /* Subtle text for inactive states */
   --btn: #f7f7f7; /* Light button background */
-  --sun: url(../assets/icons/sun.png); /* Sun icon for toggle */
+  --sun: url(./assets/icons/sun.png); /* Sun icon for toggle */
 }
 
 /* DARK MODE */
@@ -32,7 +32,7 @@ body:after {
   --text: #fff; /* Light text for dark mode */
   --text-alt: #aaa; /* Subtle text for inactive states */
   --btn: #3c3d40; /* Dark button background */
-  --moon: url(../assets/icons/moon.png); /* Moon icon for toggle */
+  --moon: url(./assets/icons/moon.png); /* Moon icon for toggle */
 }
 
 /* COLOR MODE TOGGLE BUTTON */

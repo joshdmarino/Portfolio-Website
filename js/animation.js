@@ -66,14 +66,14 @@ function resetAll() {
 
   activeCorner = null;
 }
-
+resetAll();
 // Function to apply specific styles based on the active corner
 function applyStylesForCorner(corner) {
   switch (corner) {
     case "grid__tl__btn":
       tlContent.style.transform = "translateX(0) translateY(0)";
       tlContent.style.width = "100vw";
-      tlContent.style.height = "100vh";
+      tlContent.style.height= window.innerWidth <= 600 ? "130vh" : "100vh";
       tlContent.style.top = "0";
       tlContent.style.display = "flex";
       tlContent.style.alignItems = "center";
@@ -85,7 +85,7 @@ function applyStylesForCorner(corner) {
     case "grid__tr__btn":
       trContent.style.transform = "translateX(0) translateY(0)";
       trContent.style.width = "100vw";
-      trContent.style.height = "100vh";
+      trContent.style.height= window.innerWidth <= 600 ? "130vh" : "100vh";
       trContent.style.top = "0";
       trContent.style.display = "flex";
       trContent.style.alignItems = "center";
@@ -177,26 +177,32 @@ function playClosingAnimation(reverseAnimation) {
   }, 200);
 }
 
+
 // Handle window resizing
 function handleWindowResize() {
+  // Check for small screen (adjust as per your needs)
+
   switch (activeCorner) {
     case "grid__bl__btn":
-        blActive = "translateX(0) translateY(0)";
-        blContent.style.transform = "translateX(0vw) translateY(0)";
-        blContent.style.width = "100vw";
-        blContent.style.height = "100vh";
-        blContent.style.top = "0";
-        blContent.style.display = "flex";
-        blContent.style.alignItems = "center";
-        blContent.style.justifyContent = "center";
-        blContent.style.background = "var(--bg-transparent)";
-        blContent.style.zIndex = "200";
-        projectOne.style.width = "35%";
-        projectOne.style.margin = "auto auto 0.5rem";
-        projectTwo.style.width = "35%";
-        projectTwo.style.margin = "auto auto 0.5rem";
-        projectThree.style.width = "35%";
-        projectThree.style.margin = "auto auto 0.5rem";
+      blActive = "translateX(0) translateY(0)";
+      blContent.style.transform = "translateX(0vw) translateY(0)";
+      blContent.style.width = "100vw";
+      blContent.style.height = "100vh";
+      blContent.style.top = "0";
+      blContent.style.display = "flex";
+      blContent.style.alignItems = "center";
+      blContent.style.justifyContent = "center";
+      blContent.style.background = "var(--bg-transparent)";
+      blContent.style.zIndex = "200";
+      
+      // Adjust project width based on screen size
+      const projectWidth = window.innerWidth < 768 ? "75%" : "35%";
+      projectOne.style.width = projectWidth;
+      projectOne.style.margin = "auto auto 0.5rem";
+      projectTwo.style.width = projectWidth;
+      projectTwo.style.margin = "auto auto 0.5rem";
+      projectThree.style.width = projectWidth;
+      projectThree.style.margin = "auto auto 0.5rem";
       break;
   }
 }
@@ -216,6 +222,7 @@ function activateButton(button, content, label, animation, reverseAnimation) {
   handleWindowResize();
   playAnimation(animation, reverseAnimation);
 }
+// resetAll();
 
 // Update event listeners to include animations
 tlBtn.addEventListener("click", () => {
@@ -249,3 +256,34 @@ brBtn.addEventListener("click", () => {
     activateButton(brBtn, brContent, "More", "animate-bottom-right", "reverse-animate-bottom-right");
   }
 });
+
+// Detect mobile device
+function isMobileDevice() {
+  return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+}
+
+// Add a blocker or modify top-bar behavior
+function handleMobileTopBar() {
+  if (isMobileDevice()) {
+    // Add a blocker for mobile devices
+    const blocker = document.createElement('div');
+    blocker.style.position = 'fixed';
+    blocker.style.top = '0';
+    blocker.style.left = '0';
+    blocker.style.width = '100%';
+    blocker.style.height = '4rem'; // Adjust to match your top-bar height
+    blocker.style.background = 'var(--bg-alt)';
+    blocker.style.zIndex = '101'; // Ensure it's above the content
+    document.body.appendChild(blocker);
+
+    // Adjust the top-bar
+    const topBar = document.getElementById('top-bar');
+    topBar.style.position = 'fixed';
+    topBar.style.top = '0';
+    topBar.style.width = '100%';
+    topBar.style.zIndex = '102'; // Above the blocker
+  }
+}
+
+// Execute on page load
+document.addEventListener('DOMContentLoaded', handleMobileTopBar);
