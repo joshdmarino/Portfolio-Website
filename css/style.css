@@ -522,10 +522,10 @@ button {
 
 :root{
   --first-color: #0e2431;
-  --second-color: #6a59d1;
+  --second-color: #6082B6;
   --third-color: #777;
 
-  --hover-color: #614fd0;
+  --hover-color: #6082B6;
 
   --body-bg-color: #fefefe;
   --card-bg-color: #faf9f6;
